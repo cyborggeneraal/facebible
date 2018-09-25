@@ -1,8 +1,8 @@
-$project
+Facebible
 ========
 
-$project will solve your problem of where to start with documentation,
-by providing a basic explanation of how to do it easily.
+This is a documentation for the facebible.
+There may be spelling mistakes because our English isn't good.
 
 Look how easy it is to use:
 
