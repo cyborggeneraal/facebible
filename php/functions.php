@@ -37,12 +37,12 @@
             $link->query($query);
         }
 
-        function accountOphalen($link, $username) {
+        /*function accountOphalen($link, $username) {
 
             $query = "SELECT * FROM accounts
             WHERE username='$username'";
             $result = $link->query($query);
-        }
+        }*/
         ?>
 
     </body>
