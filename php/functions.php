@@ -13,7 +13,7 @@
 
         <?php
 
-        $mysqli = new mysqli('127.0.0.1', 'zesvwo1', 'mercedes2016', 'zesvwo1');
+        $mysqli = new mysqli('127.0.0.1', 'root', '', 'facebible');
         if ($mysqli->connect_error) {
             die('Connect Error (' . $mysqli->connect_errno . ') '
                     . $mysqli->connect_error);
@@ -32,9 +32,15 @@
 
         function accountMaken($link, $username, $email, $hash) {
 
-            $query = "INSERT INTO accounts (username, email, hashedPassword)
-            VALUES ('$username', '$email', '$hash')";
-            $link->query($query);
+            $query = "SELECT username, email FROM accounts WHERE username = '$username' AND email = '$email'";
+
+            $result = $link->query($query);
+
+            if (mysqli_num_rows($result) == 0) {
+                $query = "INSERT INTO accounts (username, email, hashedPassword)
+                VALUES ('$username', '$email', '$hash')";
+                $link->query($query);
+            }
         }
 
         /*function accountOphalen($link, $username) {
