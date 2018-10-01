@@ -13,13 +13,13 @@
 
         <?php
 
-        $mysqli = new mysqli('127.0.0.1', 'root', '', 'facebible');
+        $mysqli = new mysqli('127.0.0.1', 'zesvwo1', 'mercedes2016', 'zesvwo1');
         if ($mysqli->connect_error) {
             die('Connect Error (' . $mysqli->connect_errno . ') '
                     . $mysqli->connect_error);
         }
 
-        if ($_POST["createAccount"]) {
+        if (isset($_REQUEST["createAccount"])) {
             $password = $_POST["password"];
             $username = $_POST["name"];
             $email = $_POST["email"];
