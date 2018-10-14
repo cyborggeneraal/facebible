@@ -15,13 +15,14 @@
 
             $password = $_POST["password"];
             $username = $_POST["name"];
+            $email = $_POST["email"];
             $hash = hash("sha256", $password);
 
-            login($mysqli, $username, $hash);
+            createAccount($mysqli, $username, $email, $hash);
 
             $mysqli->close();
 
-            header("Location: ./login.php");
+            header("Location: ./createAccount.php");
             exit;
         ?>
     </body>

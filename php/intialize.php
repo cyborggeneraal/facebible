@@ -1,4 +1,8 @@
 <?php
+
+//start session
+session_start();
+
 //function for creating account
 //$link is the link to the database
 //$username is the username of the new account
@@ -17,7 +21,15 @@ function createAccount($link, $username, $email, $hash) {
         VALUES ('$username', '$email', '$hash')";
         $link->query($query);
 
-        return true;
+        $query = "SELECT id INTO accounts WHERE username = '$username'";
+        $result = $link->query($query);
+
+        $id = false;
+        while ($row = $result ->fetch_assoc()) {
+            $id = $row['id'];
+        }
+
+        return $id;
     } else { //return false if there is already an account with the same email or user
         return false;
     }
@@ -37,7 +49,7 @@ function login($link, $username, $hash) {
         
         //save the id of the account in the session
         while ($row = $result->fetch_assoc()) {
-            $_SESSION['id'];
+            $_SESSION['id'] = $row['id'];
         }
 
         return true;
